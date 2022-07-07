@@ -13,7 +13,7 @@ public:
     void update();
 
 private:
-    static tinyxml2::XMLElement* find_next_xml_element(tinyxml2::XMLElement* ptr,
+    static tinyxml2::XMLElement* find_xml_element(tinyxml2::XMLElement* ptr,
                                                        const std::string& name);
     void parse_sprites_from_file();
     void place_into_cell(sf::Sprite& sprite, uint32_t i, uint32_t j);

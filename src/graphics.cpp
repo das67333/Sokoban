@@ -47,8 +47,7 @@ void Graphics::update() {
     display();
 }
 
-tinyxml2::XMLElement* Graphics::find_next_xml_element(tinyxml2::XMLElement* ptr,
-                                                      const std::string& name) {
+tinyxml2::XMLElement* Graphics::find_xml_element(tinyxml2::XMLElement* ptr, const std::string& name) {
     while (ptr && name != ptr->FindAttribute("name")->Value()) {
         ptr = ptr->NextSiblingElement();
     }
@@ -61,49 +60,51 @@ void Graphics::parse_sprites_from_file() {
 
     tinyxml2::XMLDocument doc;
     doc.LoadFile(config::xml_path.c_str());
-    tinyxml2::XMLElement* ptr = doc.RootElement()->FirstChildElement();
+    tinyxml2::XMLElement* root = doc.RootElement()->FirstChildElement();
+    tinyxml2::XMLElement* ptr = nullptr;
 
-    ptr = find_next_xml_element(ptr, config::character_left);
+    ptr = find_xml_element(root, config::character_left);
     character_left_.setTexture(texture_);
     character_left_.setTextureRect(
         sf::IntRect({ptr->IntAttribute("x"), ptr->IntAttribute("y")},
                     {ptr->IntAttribute("width"), ptr->IntAttribute("height")}));
 
-    ptr = find_next_xml_element(ptr, config::character_right);
+    ptr = find_xml_element(root, config::character_right);
     character_right_.setTexture(texture_);
     character_right_.setTextureRect(
         sf::IntRect({ptr->IntAttribute("x"), ptr->IntAttribute("y")},
                     {ptr->IntAttribute("width"), ptr->IntAttribute("height")}));
 
-    ptr = find_next_xml_element(ptr, config::character_down);
+    ptr = find_xml_element(root, config::character_down);
     character_down_.setTexture(texture_);
     character_down_.setTextureRect(
         sf::IntRect({ptr->IntAttribute("x"), ptr->IntAttribute("y")},
                     {ptr->IntAttribute("width"), ptr->IntAttribute("height")}));
 
-    ptr = find_next_xml_element(ptr, config::character_up);
+    ptr = find_xml_element(root, config::character_up);
     character_up_.setTexture(texture_);
     character_up_.setTextureRect(
         sf::IntRect({ptr->IntAttribute("x"), ptr->IntAttribute("y")},
                     {ptr->IntAttribute("width"), ptr->IntAttribute("height")}));
 
-    ptr = find_next_xml_element(ptr, config::crate);
+    ptr = find_xml_element(root, config::crate);
     crate_.setTexture(texture_);
     crate_.setTextureRect(sf::IntRect({ptr->IntAttribute("x"), ptr->IntAttribute("y")},
                                       {ptr->IntAttribute("width"), ptr->IntAttribute("height")}));
 
-    ptr = find_next_xml_element(ptr, config::endpoing);
+    ptr = find_xml_element(root, config::endpoing);
     endpoint_.setTexture(texture_);
     endpoint_.setTextureRect(
         sf::IntRect({ptr->IntAttribute("x"), ptr->IntAttribute("y")},
                     {ptr->IntAttribute("width"), ptr->IntAttribute("height")}));
 
-    ptr = find_next_xml_element(ptr, config::ground);
+    ptr = find_xml_element(root, config::ground);
     ground_.setTexture(texture_);
-    ground_.setTextureRect(sf::IntRect({ptr->IntAttribute("x"), ptr->IntAttribute("y")},
-                                       {ptr->IntAttribute("width"), ptr->IntAttribute("height")}));
+    ground_.setTextureRect(
+        sf::IntRect({ptr->IntAttribute("x"), ptr->IntAttribute("y")},
+                    {ptr->IntAttribute("width"), ptr->IntAttribute("height")}));
 
-    ptr = find_next_xml_element(ptr, config::wall);
+    ptr = find_xml_element(root, config::wall);
     wall_.setTexture(texture_);
     wall_.setTextureRect(sf::IntRect({ptr->IntAttribute("x"), ptr->IntAttribute("y")},
                                      {ptr->IntAttribute("width"), ptr->IntAttribute("height")}));

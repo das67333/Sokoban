@@ -20,7 +20,7 @@ const std::string character_right = "Character2.png";
 const std::string character_down = "Character4.png";
 const std::string character_up = "Character7.png";
 const std::string crate = "Crate_Blue.png";
-const std::string endpoing = "EndPoint_Blue.png";
+const std::string endpoing = "EndPoint_Red.png";
 const std::string ground = "GroundGravel_Dirt.png";
 const std::string wall = "Wall_Brown.png";
 }  // namespace config
