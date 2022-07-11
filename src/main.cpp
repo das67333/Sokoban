@@ -15,11 +15,7 @@ int main() {
     GameState state(level);
     Graphics gui(state);
 
-    sf::Clock clock;
-
     while (gui.isOpen()) {
         gui.update();
     }
-    std::cout << "resolution " << gui.getSize().x << 'x' << gui.getSize().y << '\n';
-    std::cout << "duration   " << clock.getElapsedTime().asMilliseconds() << '\n';
 }

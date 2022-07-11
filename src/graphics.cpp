@@ -3,8 +3,8 @@
 #include "config.h"
 #include "gamelogic.h"
 
-#include <iostream>
 #include <cassert>
+#include <iostream>
 #include <vector>
 
 Graphics::Graphics(GameState& state)
