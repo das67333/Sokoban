@@ -1,13 +1,8 @@
 # Sokoban
 
-Keyboard control:
-
-  Escape  (close)
-  
-  P       (pause)
-  
-  R       (restore to original state)
-  
-  S       (solve level)
-  
-  Arrows  (movement)
+Keyboard control:  
+&emsp;Escape  (close)  
+&emsp;P       (pause)  
+&emsp;R       (restore to original state)  
+&emsp;S       (solve level)  
+&emsp;Arrows  (movement)  
